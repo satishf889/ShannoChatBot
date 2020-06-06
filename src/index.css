@@ -215,8 +215,8 @@ Navbar
 }
 
 .message-box {
-  background-color: darkslategray;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .chat-screen {
@@ -229,9 +229,19 @@ Navbar
 }
 
 .chat-screen-header {
+  display: grid;
   background-color: #4863a0;
   height: 4em;
   border-bottom: 1px solid;
+  grid-template-columns: 0.15fr 3fr;
+}
+
+.profile-img {
+  display: block;
+  width: 5em;
+  height: 3.5em;
+  border-radius: 4em;
+  padding: 2%;
 }
 
 .header-text {
@@ -245,8 +255,9 @@ Navbar
   display: flex;
   flex-direction: column;
   border: 1px solid;
-  height: 30rem;
+  height: 16rem;
   background-color: white;
+  padding-top: 0.5em;
 }
 
 .input {
@@ -255,8 +266,27 @@ Navbar
   grid-template-columns: 4fr 0.2fr;
 }
 
+.send-button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 @media screen and (min-width: 992px) {
   .chat-box {
     height: 25rem;
   }
+}
+
+.flex-item-bottom {
+  display: flex;
+  position: fixed;
+  bottom: 2em;
+  /* float: right; */
+  right: 2em;
+  flex-direction: column;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 200;
+}
+
+.bot-button {
+  align-self: center;
 }

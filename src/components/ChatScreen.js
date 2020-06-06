@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IoIosPaperPlane } from "react-icons/io";
 import ChatMessage from "./ChatMessage";
+import TextField from "@material-ui/core/TextField";
+import botimage from "../images/bot-image.png";
 
 export default function ChatScreen() {
   const [message, setMessage] = useState("");
@@ -57,41 +59,12 @@ export default function ChatScreen() {
   // { mess: "Hi", sender: "user" },
   // { mess: "Hello", senser: "bot" },
   // ];
-  useEffect(() => {
-    const messageReply = () => {
-      console.log(messages);
-      let length = messages.length;
-      if (length > 1 && messages[length - 1]["sender"] !== "bot") {
-        if (
-          messages[length - 1]["mess"].includes("Hi") ||
-          messages[length - 1]["mess"].includes("Hello")
-        ) {
-          let message = {
-            mess: "How may I help you?",
-            sender: "bot",
-          };
-          setMessage("");
-          setMessages((messages) => [...messages, message]);
-        } else {
-          let message = {
-            mess:
-              "I am currently in development I am may help you later. Byee!",
-            sender: "bot",
-          };
-          setMessage("");
-          setMessages((messages) => [...messages, message]);
-        }
-      }
-    };
-    return () => {
-      messageReply();
-    };
-  }, [messages]);
 
   return (
     <div className="chat-screen">
       <div className="chat-screen-header">
-        <span className="header-text">Chat Bot</span>
+        <img src={botimage} className="profile-img" />
+        <span className="header-text">Shanno the Bot!</span>
       </div>
       <div className="chat-box">
         {messages.map((mess, index) => {
@@ -99,10 +72,11 @@ export default function ChatScreen() {
         })}
       </div>
       <div className="input">
-        <textarea
+        <TextField
           className="message-box"
           placeholder="Write message"
-          rows="3"
+          multiline={true}
+          rows="2"
           value={message}
           onChange={handleTextField}
         />
@@ -110,8 +84,13 @@ export default function ChatScreen() {
           style={{
             color: "white",
             margin: "auto",
-          }}>
-          <IoIosPaperPlane size={32} onClick={handleSend} />
+          }}
+        >
+          <IoIosPaperPlane
+            size={32}
+            className="send-button"
+            onClick={handleSend}
+          />
         </div>
       </div>
     </div>
